@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter/services.dart';
 import 'package:third_app/widgets/expenses.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
@@ -11,7 +12,12 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 );
 
 void main() {
-  runApp(const MyApp());
+  //WidgetsFlutterBinding.ensureInitialized();
+  //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
+  //fn,)
+  {
+    runApp(const MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -32,6 +38,11 @@ class MyApp extends StatelessWidget {
             backgroundColor: kDarkColorScheme.primaryContainer,
             foregroundColor: kDarkColorScheme.onPrimaryContainer,
           ),
+        ),
+        bottomSheetTheme: BottomSheetThemeData().copyWith(
+          modalBarrierColor: kDarkColorScheme.onPrimary.withAlpha(90),
+          showDragHandle: true,
+          dragHandleColor: kDarkColorScheme.inverseSurface,
         ),
       ),
 
@@ -56,6 +67,11 @@ class MyApp extends StatelessWidget {
             color: kColorScheme.onSecondaryContainer,
             fontSize: 14,
           ),
+        ),
+        bottomSheetTheme: BottomSheetThemeData().copyWith(
+          modalBarrierColor: kColorScheme.onPrimaryContainer.withAlpha(190),
+          showDragHandle: true,
+          dragHandleColor: kColorScheme.onSecondaryContainer,
         ),
       ),
       themeMode: ThemeMode.system,

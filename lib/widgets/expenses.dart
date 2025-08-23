@@ -4,7 +4,6 @@ import 'package:third_app/widgets/expenses-list/expenses_list.dart';
 import 'package:third_app/models/expense.dart';
 import 'package:third_app/widgets/new_expense.dart';
 
-
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
 
@@ -61,6 +60,7 @@ class _ExpensesState extends State<Expenses> {
   void _openAddExpensesOverlay() {
     showModalBottomSheet(
       isScrollControlled: true,
+      useSafeArea: true,
       context: context,
       builder: (ctx) {
         return NewExpense(addNewExpense: _addExpense);
@@ -70,6 +70,8 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     Widget mainContent = Center(
       child: Text('No expenses found start adding some!'),
     );
@@ -83,17 +85,25 @@ class _ExpensesState extends State<Expenses> {
 
     return Scaffold(
       appBar: AppBar(
+        
         title: Text('Flutter Expense Tracker'),
         actions: [
           IconButton(onPressed: _openAddExpensesOverlay, icon: Icon(Icons.add)),
         ],
       ),
-      body: Column(
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(child: mainContent),
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(expenses: _registeredExpenses),
+                Expanded(child: mainContent),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(expenses: _registeredExpenses)),
+                Expanded(child: mainContent),
+              ],
+            ),
     );
   }
 }
