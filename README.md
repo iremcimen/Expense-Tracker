@@ -1,16 +1,40 @@
-# third_app
+# Expense Tracker
 
-A new Flutter project.
+A simple Flutter expense tracker app that helps users manage their income and expenses.
+
+## Features
+
+- Add new income and expense transactions
+- View a list of recorded transactions
+- Organize personal financial records easily
+- Clean and simple user interface
+- Built with Flutter and Dart
+
+## Screens Used in the Project
+
+- `main.dart` → app entry point
+- `expenses.dart` → main expense tracker screen and app structure
+- `new_expense.dart` → form for adding a new expense
+- `expenses_list.dart` → displays the list of expenses
+- `expense_item.dart` → reusable widget for a single expense item
+- `expense.dart` → expense model and category definitions
+
+## How It Works
+
+The app starts with the main expense tracking screen.  
+When the user adds a new expense, the entered data is processed and displayed in the expense list on the screen.
+
+## Technologies
+
+- Flutter
+- Dart
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this project locally:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/iremcimen/Expense-Tracker.git
+cd Expense-Tracker
+flutter pub get
+flutter run
